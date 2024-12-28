@@ -313,7 +313,11 @@ abstract class GroupLe(
 
         val html = document.html()
 
-        val readerMark = "rm_h.readerDoInit(["
+        var readerMark = "rm_h.readerDoInit(["
+
+        if (!html.contains(readerMark)) {
+            readerMark = "rm_h.readerInit(["
+        }
 
         if (!html.contains(readerMark)) {
             if (document.select(".input-lg").isNotEmpty() || (
